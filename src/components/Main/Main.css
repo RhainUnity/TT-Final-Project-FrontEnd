@@ -1,1 +1,56 @@
 /* src/components/Main/Main.css */
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.main__summary {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.main__budget-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.main__input {
+  width: 120px;
+  padding: 6px 8px;
+}
+
+.main__list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.main__item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.main__item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main__btn {
+  width: 32px;
+  height: 32px;
+}
+
+.main__cta {
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+

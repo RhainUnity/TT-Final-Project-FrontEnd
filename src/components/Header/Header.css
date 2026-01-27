@@ -1,1 +1,33 @@
 /* src/components/Header/Header.css */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header__logo {
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+}
+
+.header__nav {
+  display: flex;
+  gap: 12px;
+}
+
+.header__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}

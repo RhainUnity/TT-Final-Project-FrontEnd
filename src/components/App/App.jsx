@@ -1,15 +1,72 @@
 // src/components/App/App.jsx
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
 
-//  ///////////
-// import {useState, useEffect} from "react";
-// import { Routes, Route } from "react-router-dom";
-// import "./App.css";
-// import Header from "../Header/Header";
-// import RequireAuth from "../RequireAuth/RequireAuth.jsx";
-// import Main from "../Main/Main";
-// import Profile from "../Profile/Profile.jsx";
-// import Footer from "../Footer/Footer.jsx";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
+import Footer from "../Footer/Footer";
 
-function App() {}
+import LoginModal from "../Modals/LoginModal/LoginModal";
+import RegisterModal from "../Modals/RegisterModal/RegisterModal";
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const closeAllModals = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(false);
+  };
+
+  const openLogin = () => {
+    setIsRegisterOpen(false);
+    setIsLoginOpen(true);
+  };
+
+  const openRegister = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  };
+
+  return (
+    <div className="page">
+      <Header
+        isLoggedIn={isLoggedIn}
+        onOpenLogin={openLogin}
+        onSignOut={() => setIsLoggedIn(false)}
+      />
+
+      <main className="page__content">
+        <Routes>
+          <Route path="/" element={<Main />} />
+
+          {/* Stage 1: allow navigation even if "logged out" */}
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
+      <Footer />
+
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={closeAllModals}
+        onFakeLogin={() => setIsLoggedIn(true)}
+        onOpenRegister={openRegister}
+      />
+
+      <RegisterModal
+        isOpen={isRegisterOpen}
+        onClose={closeAllModals}
+        onOpenLogin={openLogin}
+      />
+    </div>
+  );
+}
 
 export default App;
