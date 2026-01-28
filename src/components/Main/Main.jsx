@@ -95,71 +95,57 @@ function Main() {
             </label>
           </div>
 
-          <div className="main__actions">
-            <button className="main__action-btn" type="button">
-              Add Item
-            </button>
-            {/* <button className="main__action-btn" type="button"> */}
-            <Link
-              className="main__action-btn main__action-link"
-              to="/full-list"
-            >
-              Open Full List
-            </Link>
-            {/* </button> */}
-          </div>
-        </div>
-
-        <div className="main__row">
-          <div className="main__row-left">
-            <span className="main__item-name">
-              {featured?.name ?? "Item name"}
-            </span>
-          </div>
-
-          <div className="main__row-right">
-            <span className="main__badge main__badge--priority">
-              {featured?.priority ?? "Priority"}
-            </span>
-            <span className="main__badge main__badge--category">
-              {featured?.category ?? "Category"}
-            </span>
-
-            <div className="main__qty-wrap" aria-label="Quantity controls">
-              <button
-                className="main__qty-btn"
-                type="button"
-                onClick={() => handleDec(featured.id)}
-                aria-label={`Decrease quantity of ${featured.name}`}
-              >
-                –
-              </button>
-
-              <span
-                className="main__qty"
-                aria-label={`Quantity ${featured.qty}`}
-              >
-                {featured.qty}
+          <div className="main__row">
+            <div className="main__row-left">
+              <span className="main__item-name">
+                {featured?.name ?? "Item name"}
               </span>
-
-              <button
-                className="main__qty-btn"
-                type="button"
-                onClick={() => handleInc(featured.id)}
-                aria-label={`Increase quantity of ${featured.name}`}
-              >
-                +
-              </button>
             </div>
 
-            <span className="main__price">
-              ${((featured?.price ?? 0) * (featured?.qty ?? 0)).toFixed(2)}
-            </span>
-          </div>
-        </div>
+            <div className="main__row-right">
+              <span className="main__badge main__badge--priority">
+                {featured?.priority ?? "Priority"}
+              </span>
+              <span className="main__badge main__badge--category">
+                {featured?.category ?? "Category"}
+              </span>
 
-        {/* optional: you can keep this for debugging */}
-        <p className="main__totalline">Cart total: ${total.toFixed(2)}</p>
+              <div className="main__qty-wrap" aria-label="Quantity controls">
+                <button
+                  className="main__qty-btn"
+                  type="button"
+                  onClick={() => handleDec(featured.id)}
+                  aria-label={`Decrease quantity of ${featured.name}`}
+                >
+                  –
+                </button>
+
+                <span
+                  className="main__qty"
+                  aria-label={`Quantity ${featured.qty}`}
+                >
+                  {featured.qty}
+                </span>
+
+                <button
+                  className="main__qty-btn"
+                  type="button"
+                  onClick={() => handleInc(featured.id)}
+                  aria-label={`Increase quantity of ${featured.name}`}
+                >
+                  +
+                </button>
+              </div>
+
+              <span className="main__price">
+                ${((featured?.price ?? 0) * (featured?.qty ?? 0)).toFixed(2)}
+              </span>
+            </div>
+          </div>
+
+          {/* optional: you can keep this for debugging */}
+          <p className="main__totalline">Cart total: ${total.toFixed(2)}</p>
+        </div>
       </div>
     </section>
   );
