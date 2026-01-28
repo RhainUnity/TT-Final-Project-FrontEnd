@@ -8,10 +8,29 @@
   border-bottom: 1px solid #ddd;
 }
 
+/* .header__logo {
+  text-decoration: none;
+  font-weight: 700;
+  color: #05611e;
+} */
+
 .header__logo {
   text-decoration: none;
   font-weight: 700;
-  color: inherit;
+  font-size: 16px; /* you can tweak */
+  color: #05611e;
+
+  /* pill box */
+  background: #e8f5ec; /* light green background */
+  border: 1px solid #7acb8a; /* green border */
+  border-radius: 8px; /* <-- your 8px radius */
+  padding: 8px 12px; /* <-- 8px vertical padding */
+
+  /* subtle pop shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+  /* polish */
+  display: inline-block;
 }
 
 .header__nav {

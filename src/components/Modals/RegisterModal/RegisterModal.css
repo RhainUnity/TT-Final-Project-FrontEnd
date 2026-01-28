@@ -1,30 +1,58 @@
-// src/components/Modals/RegisterModal/RegisterModal.jsx
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./RegisterModal.css";
+/* src/components/Modals/RegisterModal/RegisterModal.css */
 
-function RegisterModal({ isOpen, onClose, onOpenLogin }) {
-  return (
-    <ModalWithForm title="Sign Up" isOpen={isOpen} onClose={onClose}>
-      <label className="auth__label">
-        Email
-        <input className="auth__input" type="email" placeholder="Email" />
-      </label>
-
-      <label className="auth__label">
-        Password
-        <input className="auth__input" type="password" placeholder="Password" />
-      </label>
-
-      <button className="auth__submit" type="button" onClick={onClose}>
-        Create Account (later)
-      </button>
-
-      <button className="auth__link" type="button" onClick={onOpenLogin}>
-        or Sign In
-      </button>
-    </ModalWithForm>
-  );
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-export default RegisterModal;
+.modal__content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
 
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal__title {
+  margin: 0 0 16px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.modal__input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.modal__submit {
+  margin-top: 12px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
