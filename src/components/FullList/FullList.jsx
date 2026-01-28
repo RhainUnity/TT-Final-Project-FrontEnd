@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import "./FullList.css";
+import AddItemModal from "../Modals/AddItemModal/AddItemModal";
 
 const STORE_TABS = ["WinCo", "Safeway", "Albertson’s"];
 
@@ -17,6 +18,7 @@ const initialRows = [
 function FullList() {
   const [activeStore, setActiveStore] = useState("Safeway");
   const [rows, setRows] = useState(initialRows);
+  const [isAddOpen, setIsAddOpen] = useState(false);
 
   // Stage 1 simple “editing row” UX for the screenshot vibe
   const [editingId, setEditingId] = useState(1);
@@ -24,6 +26,19 @@ function FullList() {
     () => rows.find((r) => r.id === editingId),
     [rows, editingId],
   );
+
+  const handleAddItem = ({ item, price, category }) => {
+    setRows((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        item,
+        category,
+        price,
+      },
+    ]);
+    setIsAddOpen(false);
+  };
 
   const handleChange = (id, patch) => {
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
@@ -41,17 +56,29 @@ function FullList() {
 
   return (
     <section className="full">
-      <div className="full__tabs">
-        {STORE_TABS.map((store) => (
+      <div className="full__tabs-wrap">
+        <div className="full__tabs">
+          {STORE_TABS.map((store) => (
+            <button
+              key={store}
+              type="button"
+              className={`full__tab ${activeStore === store ? "full__tab_active" : ""}`}
+              onClick={() => setActiveStore(store)}
+            >
+              {store}
+            </button>
+          ))}
+        </div>
+        {/* Add Item centered under Safeway */}
+        <div className="full__additem-wrap">
           <button
-            key={store}
+            className="full__additem-btn"
             type="button"
-            className={`full__tab ${activeStore === store ? "full__tab_active" : ""}`}
-            onClick={() => setActiveStore(store)}
+            onClick={() => setIsAddOpen(true)}
           >
-            {store}
+            Add Item
           </button>
-        ))}
+        </div>
       </div>
 
       {/* Stage 2/3: this becomes "search API preload" + "add manual item" */}
@@ -61,11 +88,11 @@ function FullList() {
         </button>
       </div> */}
 
-      <div className="fulllist__actions">
+      {/* <div className="fulllist__actions">
         <button className="fulllist__action-btn" type="button">
           Add Item
         </button>
-      </div>
+      </div> */}
 
       <div className="full__panel">
         <div className="full__header-row">
@@ -165,6 +192,11 @@ function FullList() {
         {/* Spacer to mimic the big empty box area in the screenshot */}
         <div className="full__spacer" />
       </div>
+      <AddItemModal
+        isOpen={isAddOpen}
+        onClose={() => setIsAddOpen(false)}
+        onSubmit={handleAddItem}
+      />
     </section>
   );
 }
