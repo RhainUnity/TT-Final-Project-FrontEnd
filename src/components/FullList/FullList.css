@@ -54,25 +54,25 @@
   height: 34px;
   border-radius: 6px;
   border: 2px solid #7fb88a;
-  background: #f3f3f3;
+  /*background: #f3f3f3;*/
+  background: linear-gradient(#e8d9d9, #cfcfcf);
   font-weight: 700;
   cursor: pointer;
 }
 
 .full__tab:nth-child(1) {
   color: #cc1c1c;
-} /* WinCo red */
+}
 .full__tab:nth-child(2) {
-  color: #fff;
-} /* Safeway active becomes white text */
+  color: #030101;
+}
 .full__tab:nth-child(3) {
   color: #2f55d6;
-} /* Albertson's blue */
+}
 
 .full__tab_active {
-  background: #c80f0f;
-  border-color: #1a1a1a;
-  color: #fff;
+  background: linear-gradient(#1ff008d9, #0fbf07cf);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* Main panel box */
@@ -88,7 +88,7 @@
 /* Header row */
 .full__header-row {
   display: grid;
-  grid-template-columns: 1.6fr 0.9fr 0.6fr 0.8fr;
+  grid-template-columns: 3.33fr 0.9fr 0.72fr 0.8fr;
   padding: 6px 8px;
   border-bottom: 1px solid #cfcfcf;
   font-weight: 700;
@@ -98,7 +98,7 @@
 /* Rows */
 .full__row {
   display: grid;
-  grid-template-columns: 1.6fr 0.9fr 0.6fr 0.8fr;
+  grid-template-columns: 3.6fr 0.9fr 0.72fr 0.8fr;
   align-items: start;
   gap: 8px;
   padding: 10px 8px;

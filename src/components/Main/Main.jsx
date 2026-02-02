@@ -58,8 +58,8 @@ function Main() {
     );
   };
 
-  // For now, show first item to match your screenshot’s “single row” look
-  const featured = items[0];
+  // item variables to be implemented from backend later
+  const mainItem = items[0];
 
   return (
     <section className="main">
@@ -108,47 +108,47 @@ function Main() {
         <div className="main__row">
           <div className="main__row-left">
             <span className="main__item-name">
-              {featured?.name ?? "Item name"}
+              {mainItem?.name ?? "Item name"}
             </span>
           </div>
 
           <div className="main__row-right">
             <span className="main__badge main__badge--priority">
-              {featured?.priority ?? "Priority"}
+              {mainItem?.priority ?? "Priority"}
             </span>
             <span className="main__badge main__badge--category">
-              {featured?.category ?? "Category"}
+              {mainItem?.category ?? "Category"}
             </span>
 
             <div className="main__qty-wrap" aria-label="Quantity controls">
               <button
                 className="main__qty-btn"
                 type="button"
-                onClick={() => handleDec(featured.id)}
-                aria-label={`Decrease quantity of ${featured.name}`}
+                onClick={() => handleDec(mainItem.id)}
+                aria-label={`Decrease quantity of ${mainItem.name}`}
               >
                 –
               </button>
 
               <span
                 className="main__qty"
-                aria-label={`Quantity ${featured.qty}`}
+                aria-label={`Quantity ${mainItem.qty}`}
               >
-                {featured.qty}
+                {mainItem.qty}
               </span>
 
               <button
                 className="main__qty-btn"
                 type="button"
-                onClick={() => handleInc(featured.id)}
-                aria-label={`Increase quantity of ${featured.name}`}
+                onClick={() => handleInc(mainItem.id)}
+                aria-label={`Increase quantity of ${mainItem.name}`}
               >
                 +
               </button>
             </div>
 
             <span className="main__price">
-              ${((featured?.price ?? 0) * (featured?.qty ?? 0)).toFixed(2)}
+              ${((mainItem?.price ?? 0) * (mainItem?.qty ?? 0)).toFixed(2)}
             </span>
           </div>
         </div>

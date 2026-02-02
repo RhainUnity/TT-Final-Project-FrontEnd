@@ -81,19 +81,6 @@ function FullList() {
         </div>
       </div>
 
-      {/* Stage 2/3: this becomes "search API preload" + "add manual item" */}
-      {/* <div className="main__footer-actions">
-        <button className="main__cta" type="button">
-          Add Item (modal later)
-        </button>
-      </div> */}
-
-      {/* <div className="fulllist__actions">
-        <button className="fulllist__action-btn" type="button">
-          Add Item
-        </button>
-      </div> */}
-
       <div className="full__panel">
         <div className="full__header-row">
           <div className="full__col full__col_item">Item</div>
