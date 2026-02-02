@@ -54,7 +54,6 @@
   height: 34px;
   border-radius: 6px;
   border: 2px solid #7fb88a;
-  /*background: #f3f3f3;*/
   background: linear-gradient(#e8d9d9, #cfcfcf);
   font-weight: 700;
   cursor: pointer;
@@ -88,7 +87,7 @@
 /* Header row */
 .full__header-row {
   display: grid;
-  grid-template-columns: 3.33fr 0.9fr 0.72fr 0.8fr;
+  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr /*0.8fr*/;
   padding: 6px 8px;
   border-bottom: 1px solid #cfcfcf;
   font-weight: 700;
@@ -98,7 +97,7 @@
 /* Rows */
 .full__row {
   display: grid;
-  grid-template-columns: 3.6fr 0.9fr 0.72fr 0.8fr;
+  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr /*0.8fr*/;
   align-items: start;
   gap: 8px;
   padding: 10px 8px;
@@ -117,9 +116,28 @@
 }
 
 .full__actions {
-  display: grid;
-  gap: 8px;
-  justify-items: start;
+  display: flex; /* was grid */
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.full__col_action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.full__hide {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.full__hide-input {
+  accent-color: #1b7a2a; /* nice green checkbox */
 }
 
 /* Inputs with green outline like screenshot */

@@ -89,7 +89,7 @@ function Main() {
               >
                 <option value="All">All</option>
                 <option value="Essential">Essential</option>
-                <option value="Needed">Needed</option>
+                <option value="Surplus">Surplus</option>
                 <option value="Optional">Optional</option>
               </select>
             </label>

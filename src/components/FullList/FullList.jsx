@@ -10,8 +10,10 @@ const initialRows = [
   {
     id: 1,
     item: "Nissin Chow Mein",
-    category: "Needed",
+    priority: "Essential",
+    category: "Pantry",
     price: 2.75,
+    hidden: false,
   },
 ];
 
@@ -27,14 +29,16 @@ function FullList() {
     [rows, editingId],
   );
 
-  const handleAddItem = ({ item, price, category }) => {
+  const handleAddItem = ({ item, price, category, priority }) => {
     setRows((prev) => [
       ...prev,
       {
         id: Date.now(),
         item,
         category,
+        priority,
         price,
+        hidden: false,
       },
     ]);
     setIsAddOpen(false);
@@ -85,8 +89,8 @@ function FullList() {
         <div className="full__header-row">
           <div className="full__col full__col_item">Item</div>
           <div className="full__col full__col_category">Category</div>
+          <div className="full__col full__col_priority">Priority</div>
           <div className="full__col full__col_price">Price</div>
-          <div className="full__col full__col_action">Action</div>
         </div>
 
         <div className="full__body">
@@ -118,12 +122,30 @@ function FullList() {
                         handleChange(row.id, { category: e.target.value })
                       }
                     >
-                      <option value="Needed">Needed</option>
-                      <option value="Optional">Optional</option>
-                      <option value="Skip">Skip</option>
+                      <option value="Pantry">Pantry</option>
+                      <option value="Dairy">Dairy</option>
+                      <option value="Meat">Meat</option>
                     </select>
                   ) : (
                     <span>{row.category}</span>
+                  )}
+                </div>
+
+                <div className="full__cell full__col_priority">
+                  {isEditing ? (
+                    <select
+                      className="full__select"
+                      value={row.priority}
+                      onChange={(e) =>
+                        handleChange(row.id, { priority: e.target.value })
+                      }
+                    >
+                      <option value="Essential">Essential</option>
+                      <option value="Surplus">Surplus</option>
+                      <option value="Optional">Optional</option>
+                    </select>
+                  ) : (
+                    <span>{row.priority}</span>
                   )}
                 </div>
 
@@ -144,6 +166,18 @@ function FullList() {
                 </div>
 
                 <div className="full__cell full__col_action">
+                  <label className="full__hide">
+                    <input
+                      className="full__hide-input"
+                      type="checkbox"
+                      checked={!!row.hidden}
+                      onChange={(e) =>
+                        handleChange(row.id, { hidden: e.target.checked })
+                      }
+                    />
+                    <span className="full__hide-text">Hide</span>
+                  </label>
+
                   {isEditing ? (
                     <div className="full__actions">
                       <button

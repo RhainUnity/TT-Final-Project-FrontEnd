@@ -54,7 +54,7 @@
   height: 34px;
   border-radius: 6px;
   border: 1px solid #2a6a37;
-  background: #64b26f;
+  background: linear-gradient(#9bba9f, #66a373);
   cursor: pointer;
   font-weight: 700;
 }

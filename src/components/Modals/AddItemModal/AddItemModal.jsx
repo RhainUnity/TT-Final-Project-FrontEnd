@@ -25,7 +25,7 @@ function AddItemModal({ isOpen, onClose, onSubmit }) {
     onSubmit({
       item: name.trim(),
       price: parsedPrice,
-      category: category.trim() || "Needed",
+      category: category.trim() || "Surplus",
     });
   };
 
@@ -60,7 +60,6 @@ function AddItemModal({ isOpen, onClose, onSubmit }) {
               required
             />
           </label>
-
           <label className="addmodal__label">
             Item Price
             <input
@@ -75,16 +74,19 @@ function AddItemModal({ isOpen, onClose, onSubmit }) {
             />
           </label>
 
+          {/* needs to be dropdown */}
           <label className="addmodal__label">
             Item Category
-            <input
+            <select
               className="addmodal__input"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              placeholder=""
-            />
+            >
+              <option value="Essential">Essential</option>
+              <option value="Surplus">Surplus</option>
+              <option value="Optional">Optional</option>
+            </select>
           </label>
-
           <button className="addmodal__submit" type="submit">
             Submit
           </button>
