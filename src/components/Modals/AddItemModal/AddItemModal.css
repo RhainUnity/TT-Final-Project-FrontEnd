@@ -58,3 +58,51 @@
   cursor: pointer;
   font-weight: 700;
 }
+
+.addmodal__secondary {
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #2a6a37;
+  background: #f1f1f1;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.addmodal__lookup {
+  border: 1px solid #7fb88a;
+  border-radius: 8px;
+  padding: 10px;
+  background: #ffffff;
+  display: grid;
+  gap: 10px;
+}
+
+.addmodal__lookup-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.addmodal__lookup-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.addmodal__lookup-btn {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #7fb88a;
+  background: #f1f1f1;
+}
+
+.addmodal__lookup-results {
+  border: 1px dashed #cfcfcf;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.addmodal__hint {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}

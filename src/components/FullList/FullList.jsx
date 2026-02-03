@@ -6,29 +6,19 @@ import AddItemModal from "../Modals/AddItemModal/AddItemModal";
 
 const STORE_TABS = ["WinCo", "Safeway", "Albertson’s"];
 
-// //////////
-// const initialRows = [
-//   {
-//     id: 1,
-//     item: "Nissin Chow Mein",
-//     priority: "Essential",
-//     category: "Pantry",
-//     price: 2.75,
-//     hidden: false,
-//   },
-// ];  //////////////////////////
-
 function FullList({ items = [], setItems }) {
   const [activeStore, setActiveStore] = useState("Safeway");
   // ////////const [rows, setRows] = useState(initialRows);
   const [isAddOpen, setIsAddOpen] = useState(false);
 
   // Stage 1 simple “editing row” UX for the screenshot vibe
-  const [editingId, setEditingId] = useState(1);
-  const editingRow = useMemo(
-    () => items.find((r) => r.id === editingId),
-    [items, editingId],
-  );
+  const [editingId, setEditingId] = useState(null);
+
+  // use later to disable Save button if no changes
+  // const editingRow = useMemo(
+  //   () => items.find((r) => r.id === editingId),
+  //   [items, editingId],
+  // );
 
   const handleAddItem = ({ item, price, category, priority }) => {
     setItems((prev) => [
@@ -219,6 +209,7 @@ function FullList({ items = [], setItems }) {
         isOpen={isAddOpen}
         onClose={() => setIsAddOpen(false)}
         onSubmit={handleAddItem}
+        store={activeStore}
       />
     </section>
   );
