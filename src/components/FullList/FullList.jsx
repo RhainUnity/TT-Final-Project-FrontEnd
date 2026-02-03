@@ -6,31 +6,32 @@ import AddItemModal from "../Modals/AddItemModal/AddItemModal";
 
 const STORE_TABS = ["WinCo", "Safeway", "Albertson’s"];
 
-const initialRows = [
-  {
-    id: 1,
-    item: "Nissin Chow Mein",
-    priority: "Essential",
-    category: "Pantry",
-    price: 2.75,
-    hidden: false,
-  },
-];
+// //////////
+// const initialRows = [
+//   {
+//     id: 1,
+//     item: "Nissin Chow Mein",
+//     priority: "Essential",
+//     category: "Pantry",
+//     price: 2.75,
+//     hidden: false,
+//   },
+// ];  //////////////////////////
 
-function FullList() {
+function FullList({ items = [], setItems }) {
   const [activeStore, setActiveStore] = useState("Safeway");
-  const [rows, setRows] = useState(initialRows);
+  // ////////const [rows, setRows] = useState(initialRows);
   const [isAddOpen, setIsAddOpen] = useState(false);
 
   // Stage 1 simple “editing row” UX for the screenshot vibe
   const [editingId, setEditingId] = useState(1);
   const editingRow = useMemo(
-    () => rows.find((r) => r.id === editingId),
-    [rows, editingId],
+    () => items.find((r) => r.id === editingId),
+    [items, editingId],
   );
 
   const handleAddItem = ({ item, price, category, priority }) => {
-    setRows((prev) => [
+    setItems((prev) => [
       ...prev,
       {
         id: Date.now(),
@@ -38,6 +39,7 @@ function FullList() {
         category,
         priority,
         price,
+        qty: 0,
         hidden: false,
       },
     ]);
@@ -45,7 +47,7 @@ function FullList() {
   };
 
   const handleChange = (id, patch) => {
-    setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
+    setItems((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
   };
 
   const handleSave = () => {
@@ -94,7 +96,7 @@ function FullList() {
         </div>
 
         <div className="full__body">
-          {rows.map((row) => {
+          {items.map((row) => {
             const isEditing = row.id === editingId;
 
             return (

@@ -123,6 +123,11 @@
   flex-wrap: nowrap;
 }
 
+.full__hide-text {
+  margin-top: 3px;
+  font-size: 14px;
+}
+
 .full__col_action {
   display: flex;
   align-items: center;

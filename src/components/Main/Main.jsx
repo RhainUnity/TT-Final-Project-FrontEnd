@@ -3,42 +3,40 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Main.css";
 
-const initialItems = [
-  {
-    id: 1,
-    name: "Nissin Chow Mein",
-    price: 2.75,
-    category: "Category",
-    priority: "Priority",
-    qty: 10,
-  },
-  {
-    id: 2,
-    name: "Eggs (dozen)",
-    price: 3.99,
-    category: "Category",
-    priority: "Priority",
-    qty: 0,
-  },
-  {
-    id: 3,
-    name: "Chicken breast",
-    price: 6.49,
-    category: "Category",
-    priority: "Priority",
-    qty: 0,
-  },
-];
+// const initialItems = [
+//   {
+//     id: 1,
+//     name: "Nissin Chow Mein",
+//     price: 2.75,
+//     category: "Category",
+//     priority: "Priority",
+//     qty: 10,
+//   },
+//   {
+//     id: 2,
+//     name: "Eggs (dozen)",
+//     price: 3.99,
+//     category: "Category",
+//     priority: "Priority",
+//     qty: 0,
+//   },
+//   {
+//     id: 3,
+//     name: "Chicken breast",
+//     price: 6.49,
+//     category: "Category",
+//     priority: "Priority",
+//     qty: 0,
+//   },
+// ];
 
-function Main() {
-  const [items, setItems] = useState(initialItems);
-
-  // UI-only for now (you’ll wire these later)
-  const [filterCategory, setFilterCategory] = useState("");
-  const [filterPriority, setFilterPriority] = useState("");
+function Main({ items = [], setItems }) {
+  const [filterCategory, setFilterCategory] = useState("All");
+  const [filterPriority, setFilterPriority] = useState("All");
 
   const total = useMemo(
-    () => items.reduce((sum, item) => sum + item.price * item.qty, 0),
+    () =>
+      items.reduce((sum, item) => sum + (item.price ?? 0) * (item.qty ?? 0), 0),
     [items],
   );
 
@@ -58,8 +56,46 @@ function Main() {
     );
   };
 
+  const applyVisibilityFromFilters = (nextCategory, nextPriority) => {
+    setItems((prev) =>
+      prev.map((i) => {
+        const matchCategory =
+          nextCategory === "All" || i.category === nextCategory;
+
+        const matchPriority =
+          nextPriority === "All" || i.priority === nextPriority;
+
+        // show matches, hide non-matches
+        const shouldShow = matchCategory && matchPriority;
+
+        return { ...i, hidden: !shouldShow };
+      }),
+    );
+  };
+  // //////////////////
+
   // item variables to be implemented from backend later
-  const mainItem = items[0];
+  // //////////////////
+  // const visibleItems = items.filter((i) => !i.hidden);
+  // const mainItem = visibleItems[0];
+
+  const visibleItems = items.filter((i) => !i.hidden);
+
+  const matchesCategory = (i) =>
+    filterCategory === "All" ||
+    filterCategory === "" ||
+    i.category === filterCategory;
+
+  const matchesPriority = (i) =>
+    filterPriority === "All" ||
+    filterPriority === "" ||
+    i.priority === filterPriority;
+
+  const filteredItems = visibleItems.filter(
+    (i) => matchesCategory(i) && matchesPriority(i),
+  );
+
+  const mainItem = filteredItems[0];
 
   return (
     <section className="main">
@@ -105,54 +141,62 @@ function Main() {
           </div>
         </div>
 
-        <div className="main__row">
-          <div className="main__row-left">
-            <span className="main__item-name">
-              {mainItem?.name ?? "Item name"}
-            </span>
+        {filteredItems.length === 0 ? (
+          <p className="main__empty">No items match your filters.</p>
+        ) : (
+          <div className="main__list">
+            {filteredItems.map((row) => (
+              <div key={row.id} className="main__row">
+                <div className="main__row-left">
+                  <span className="main__item-name">{row.item}</span>
+                </div>
+
+                <div className="main__row-right">
+                  <span className="main__badge main__badge--priority">
+                    {row.priority}
+                  </span>
+                  <span className="main__badge main__badge--category">
+                    {row.category}
+                  </span>
+
+                  <div
+                    className="main__qty-wrap"
+                    aria-label="Quantity controls"
+                  >
+                    <button
+                      className="main__qty-btn"
+                      type="button"
+                      onClick={() => handleDec(row.id)}
+                      aria-label={`Decrease quantity of ${row.item}`}
+                    >
+                      –
+                    </button>
+
+                    <span
+                      className="main__qty"
+                      aria-label={`Quantity ${row.qty ?? 0}`}
+                    >
+                      {row.qty ?? 0}
+                    </span>
+
+                    <button
+                      className="main__qty-btn"
+                      type="button"
+                      onClick={() => handleInc(row.id)}
+                      aria-label={`Increase quantity of ${row.item}`}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <span className="main__price">
+                    ${((row.price ?? 0) * (row.qty ?? 0)).toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="main__row-right">
-            <span className="main__badge main__badge--priority">
-              {mainItem?.priority ?? "Priority"}
-            </span>
-            <span className="main__badge main__badge--category">
-              {mainItem?.category ?? "Category"}
-            </span>
-
-            <div className="main__qty-wrap" aria-label="Quantity controls">
-              <button
-                className="main__qty-btn"
-                type="button"
-                onClick={() => handleDec(mainItem.id)}
-                aria-label={`Decrease quantity of ${mainItem.name}`}
-              >
-                –
-              </button>
-
-              <span
-                className="main__qty"
-                aria-label={`Quantity ${mainItem.qty}`}
-              >
-                {mainItem.qty}
-              </span>
-
-              <button
-                className="main__qty-btn"
-                type="button"
-                onClick={() => handleInc(mainItem.id)}
-                aria-label={`Increase quantity of ${mainItem.name}`}
-              >
-                +
-              </button>
-            </div>
-
-            <span className="main__price">
-              ${((mainItem?.price ?? 0) * (mainItem?.qty ?? 0)).toFixed(2)}
-            </span>
-          </div>
-        </div>
-
+        )}
         <p className="main__totalline">Cart total: ${total.toFixed(2)}</p>
       </div>
     </section>

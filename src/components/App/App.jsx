@@ -18,6 +18,18 @@ function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      item: "Nissin Chow Mein",
+      priority: "Essential",
+      category: "Pantry",
+      price: 2.75,
+      qty: 10,
+      hidden: false,
+    },
+  ]);
+
   const closeAllModals = () => {
     setIsLoginOpen(false);
     setIsRegisterOpen(false);
@@ -43,13 +55,19 @@ function App() {
 
       <main className="page__content">
         <Routes>
-          <Route path="/" element={<Main />} />
-
           {/* Stage 1: allow navigation even if "logged out" */}
           <Route path="/profile" element={<Profile />} />
 
+          <Route
+            path="/"
+            element={<Main items={items} setItems={setItems} />}
+          />
+          <Route
+            path="/full-list"
+            element={<FullList items={items} setItems={setItems} />}
+          />
+
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/full-list" element={<FullList />} />
         </Routes>
       </main>
 
