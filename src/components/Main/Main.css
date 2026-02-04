@@ -77,7 +77,7 @@
   text-decoration: none;
 }
 
-/* item row pill */
+/* item row */
 .main__row {
   display: flex;
   align-items: center;
@@ -105,7 +105,7 @@
   color: #2a2a2a;
 }
 
-/* right cluster */
+/* right group */
 .main__row-right {
   display: flex;
   align-items: center;

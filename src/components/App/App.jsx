@@ -21,6 +21,7 @@ function App() {
 
   const [avatarUrl, setAvatarUrl] = useState(null);
 
+  // temporary hardcoded items
   const [items, setItems] = useState([
     {
       id: 1,

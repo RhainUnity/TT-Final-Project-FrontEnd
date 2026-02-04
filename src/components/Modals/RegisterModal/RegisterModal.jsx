@@ -38,7 +38,7 @@ function RegisterModal({ isOpen, onClose, onOpenLogin, onRegister }) {
         <input className="auth__input" type="password" placeholder="Password" />
       </label>
 
-      {/* NEW: avatar upload */}
+      {/* Avatar upload */}
       <label className="auth__label">
         Avatar (optional)
         <input

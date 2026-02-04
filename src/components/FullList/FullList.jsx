@@ -8,10 +8,9 @@ const STORE_TABS = ["WinCo", "Safeway", "Albertson’s"];
 
 function FullList({ items = [], setItems }) {
   const [activeStore, setActiveStore] = useState("Safeway");
-  // ////////const [rows, setRows] = useState(initialRows);
   const [isAddOpen, setIsAddOpen] = useState(false);
 
-  // Stage 1 simple “editing row” UX for the screenshot vibe
+  // Stage 1
   const [editingId, setEditingId] = useState(null);
 
   // use later to disable Save button if no changes
@@ -50,6 +49,7 @@ function FullList({ items = [], setItems }) {
     setEditingId(null);
   };
 
+// Store Tabs
   return (
     <section className="full">
       <div className="full__tabs-wrap">
@@ -65,7 +65,8 @@ function FullList({ items = [], setItems }) {
             </button>
           ))}
         </div>
-        {/* Add Item centered under Safeway */}
+
+        {/* Add Item button */}
         <div className="full__additem-wrap">
           <button
             className="full__additem-btn"
@@ -77,6 +78,7 @@ function FullList({ items = [], setItems }) {
         </div>
       </div>
 
+      {/* Items Header */}
       <div className="full__panel">
         <div className="full__header-row">
           <div className="full__col full__col_item">Item</div>
@@ -85,6 +87,7 @@ function FullList({ items = [], setItems }) {
           <div className="full__col full__col_price">Price</div>
         </div>
 
+        {/* Items Info */}
         <div className="full__body">
           {items.map((row) => {
             const isEditing = row.id === editingId;
@@ -105,6 +108,7 @@ function FullList({ items = [], setItems }) {
                   )}
                 </div>
 
+                {/* Category */}
                 <div className="full__cell full__col_category">
                   {isEditing ? (
                     <select
@@ -123,6 +127,7 @@ function FullList({ items = [], setItems }) {
                   )}
                 </div>
 
+                {/* Priority */}
                 <div className="full__cell full__col_priority">
                   {isEditing ? (
                     <select
@@ -141,6 +146,8 @@ function FullList({ items = [], setItems }) {
                   )}
                 </div>
 
+                
+                {/* Price */}
                 <div className="full__cell full__col_price">
                   {isEditing ? (
                     <input
@@ -157,6 +164,7 @@ function FullList({ items = [], setItems }) {
                   )}
                 </div>
 
+                {/* Actions */}
                 <div className="full__cell full__col_action">
                   <label className="full__hide">
                     <input
@@ -202,7 +210,6 @@ function FullList({ items = [], setItems }) {
           })}
         </div>
 
-        {/* Spacer to mimic the big empty box area in the screenshot */}
         <div className="full__spacer" />
       </div>
       <AddItemModal

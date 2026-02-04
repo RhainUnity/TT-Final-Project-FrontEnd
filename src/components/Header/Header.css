@@ -11,7 +11,7 @@
 .header__logo {
   text-decoration: none;
   font-weight: 700;
-  font-size: 16px; /* you can tweak */
+  font-size: 16px;
   color: #05611e;
 
   background: #e8f5ec;
@@ -64,7 +64,7 @@
   height: 34px;
   border-radius: 50%;
   border: 2px solid #85b48d;
-  background: #e9e9e9; /* default light gray */
+  background: #e9e9e9;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden;
   display: inline-flex;
@@ -73,7 +73,7 @@
 }
 
 .header__avatar--empty {
-  background: #d9d9d9; /* slightly darker gray when not signed in */
+  background: #d9d9d9;
   border-color: #cfcfcf;
   box-shadow: none;
 }

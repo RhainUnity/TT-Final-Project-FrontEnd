@@ -43,6 +43,7 @@ function Header({ isLoggedIn, avatarUrl, onOpenLogin, onSignOut }) {
           </button>
         )}
 
+        {/* Sign In / Out Button */}
         {isLoggedIn ? (
           <button className="header__btn" type="button" onClick={onSignOut}>
             Sign Out

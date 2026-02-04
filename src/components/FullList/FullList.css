@@ -4,7 +4,6 @@
   background: #efefef;
 }
 
-/* Tabs */
 .full__tabs {
   display: flex;
   gap: 18px;
@@ -22,15 +21,11 @@
   margin-bottom: 14px;
 }
 
-/* Center Add Item under middle tab (Safeway) */
 .full__additem-wrap {
   margin-top: 8px;
-
-  /* Nudge right so it visually centers under Safeway */
-  transform: translateX(0px); /* tweak if needed */
+  transform: translateX(0px);
 }
 
-/* Style to MATCH main Open Full List button */
 .full__additem-btn {
   width: 170px;
   height: 44px;
@@ -87,7 +82,7 @@
 /* Header row */
 .full__header-row {
   display: grid;
-  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr /*0.8fr*/;
+  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr;
   padding: 6px 8px;
   border-bottom: 1px solid #cfcfcf;
   font-weight: 700;
@@ -97,7 +92,7 @@
 /* Rows */
 .full__row {
   display: grid;
-  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr /*0.8fr*/;
+  grid-template-columns: 3.7fr 1fr 1.09fr 0.72fr;
   align-items: start;
   gap: 8px;
   padding: 10px 8px;
@@ -116,7 +111,7 @@
 }
 
 .full__actions {
-  display: flex; /* was grid */
+  display: flex;
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
@@ -142,10 +137,9 @@
 }
 
 .full__hide-input {
-  accent-color: #1b7a2a; /* nice green checkbox */
+  accent-color: #1b7a2a;
 }
 
-/* Inputs with green outline like screenshot */
 .full__input,
 .full__select {
   width: 100%;
@@ -161,7 +155,6 @@
   max-width: 84px;
 }
 
-/* Buttons like screenshot */
 .full__btn {
   height: 22px;
   padding: 0 10px;

@@ -71,6 +71,8 @@ function Main({ items = [], setItems }) {
       <div className="main__panel">
         <div className="main__top">
           <div className="main__filters">
+
+            {/* Filter Category */}
             <label className="main__field">
               <span className="main__label">Filter category:</span>
               <select
@@ -85,6 +87,7 @@ function Main({ items = [], setItems }) {
               </select>
             </label>
 
+            {/* Filter Prioroty */}
             <label className="main__field">
               <span className="main__label">Filter priority:</span>
               <select
@@ -100,6 +103,7 @@ function Main({ items = [], setItems }) {
             </label>
           </div>
 
+          {/* Edit Actions */}
           <div className="main__actions">
             <Link
               className="main__action-btn main__action-link"

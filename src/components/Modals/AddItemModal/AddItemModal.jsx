@@ -9,7 +9,7 @@ function AddItemModal({ isOpen, onClose, onSubmit, store }) {
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("Essential");
 
-  // toggle button for ookup form
+  // toggle button for lookup form
   const [isLookupOpen, setIsLookupOpen] = useState(false);
 
   // fields for lookup form (UI only for now)
@@ -116,7 +116,7 @@ function AddItemModal({ isOpen, onClose, onSubmit, store }) {
           </label>
 
           {/* // /// Lookup form (UI only for now)  */}
-          {/* NEW: button to open lookup form */}
+          {/* Button to open lookup form */}
           <label className="addmodal__label">
             Store
             <select className="addmodal__input" value={store} disabled>
