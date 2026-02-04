@@ -3,33 +3,6 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Main.css";
 
-// const initialItems = [
-//   {
-//     id: 1,
-//     name: "Nissin Chow Mein",
-//     price: 2.75,
-//     category: "Category",
-//     priority: "Priority",
-//     qty: 10,
-//   },
-//   {
-//     id: 2,
-//     name: "Eggs (dozen)",
-//     price: 3.99,
-//     category: "Category",
-//     priority: "Priority",
-//     qty: 0,
-//   },
-//   {
-//     id: 3,
-//     name: "Chicken breast",
-//     price: 6.49,
-//     category: "Category",
-//     priority: "Priority",
-//     qty: 0,
-//   },
-// ];
-
 function Main({ items = [], setItems }) {
   const [filterCategory, setFilterCategory] = useState("All");
   const [filterPriority, setFilterPriority] = useState("All");
@@ -72,12 +45,8 @@ function Main({ items = [], setItems }) {
       }),
     );
   };
-  // //////////////////
 
   // item variables to be implemented from backend later
-  // //////////////////
-  // const visibleItems = items.filter((i) => !i.hidden);
-  // const mainItem = visibleItems[0];
 
   const visibleItems = items.filter((i) => !i.hidden);
 

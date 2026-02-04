@@ -8,6 +8,7 @@ import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import FullList from "../FullList/FullList";
+import About from "../About/About";
 
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal";
@@ -17,6 +18,8 @@ function App() {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const [avatarUrl, setAvatarUrl] = useState("null");
 
   const [items, setItems] = useState([
     {
@@ -49,12 +52,17 @@ function App() {
     <div className="page">
       <Header
         isLoggedIn={isLoggedIn}
+        avatarUrl={avatarUrl}
         onOpenLogin={openLogin}
-        onSignOut={() => setIsLoggedIn(false)}
+        onSignOut={() => {
+          setIsLoggedIn(false);
+          setAvatarUrl("null");
+        }}
       />
 
       <main className="page__content">
         <Routes>
+          <Route path="/about" element={<About />} />
           {/* Stage 1: allow navigation even if "logged out" */}
           <Route path="/profile" element={<Profile />} />
 
@@ -84,6 +92,11 @@ function App() {
         isOpen={isRegisterOpen}
         onClose={closeAllModals}
         onOpenLogin={openLogin}
+        onRegister={({ avatarUrl }) => {
+          setIsLoggedIn(true);
+          setAvatarUrl(avatarUrl || "null");
+          closeAllModals();
+        }}
       />
     </div>
   );
