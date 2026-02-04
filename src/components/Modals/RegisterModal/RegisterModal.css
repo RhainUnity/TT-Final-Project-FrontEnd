@@ -56,3 +56,17 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+.auth__avatar-preview {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth__avatar-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #85b48d;
+  object-fit: cover;
+}

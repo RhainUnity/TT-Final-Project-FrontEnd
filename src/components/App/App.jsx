@@ -19,7 +19,7 @@ function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  const [avatarUrl, setAvatarUrl] = useState("null");
+  const [avatarUrl, setAvatarUrl] = useState(null);
 
   const [items, setItems] = useState([
     {
@@ -56,7 +56,7 @@ function App() {
         onOpenLogin={openLogin}
         onSignOut={() => {
           setIsLoggedIn(false);
-          setAvatarUrl("null");
+          setAvatarUrl(null);
         }}
       />
 
@@ -94,7 +94,7 @@ function App() {
         onOpenLogin={openLogin}
         onRegister={({ avatarUrl }) => {
           setIsLoggedIn(true);
-          setAvatarUrl(avatarUrl || "null");
+          setAvatarUrl(avatarUrl || null);
           closeAllModals();
         }}
       />

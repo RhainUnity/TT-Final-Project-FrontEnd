@@ -1,4 +1,4 @@
-// src/components/Modals/ModalWithForm/ModalWithform.jsx
+// src/components/Modals/ModalWithForm/ModalWithForm.jsx
 
 import { useEffect } from "react";
 import "./ModalWithForm.css";
@@ -31,4 +31,3 @@ function ModalWithForm({ title, isOpen, onClose, children }) {
 }
 
 export default ModalWithForm;
-
